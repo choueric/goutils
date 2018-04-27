@@ -5,6 +5,7 @@ import (
 	"strings"
 )
 
+// @r can be get from *os.File by bufio.NewReader()
 func ReadLine(r *bufio.Reader) (string, error) {
 	str, err := r.ReadString('\n')
 	if err != nil {
