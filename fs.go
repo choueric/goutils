@@ -12,3 +12,16 @@ func IsFileExist(filepath string) (bool, error) {
 	}
 	return true, nil
 }
+
+func SaveToFile(data []byte, filename string) error {
+	f, err := os.OpenFile(filename, os.O_RDWR|os.O_CREATE|os.O_APPEND, os.ModePerm)
+	if err != nil {
+		return err
+	}
+	defer f.Close()
+
+	if _, err := f.Write(data); err != nil {
+		return err
+	}
+	return nil
+}
